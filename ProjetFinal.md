@@ -1,42 +1,50 @@
-Projet final
+Projet final - Kim Thifault et Laurie Labonté
 ================
-12/16/2024
+16 décembre 2024
 
-``` r
-library(tidyverse) 
-```
+## Introduction
 
-``` r
-hate_crime <- read_csv("data/hate_crime.csv")
-```
+## Données
 
-    ## Rows: 209442 Columns: 28
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: ","
-    ## chr (19): ORI, PUB_AGENCY_NAME, PUB_AGENCY_UNIT, AGENCY_TYPE_NAME, STATE_ABB...
-    ## dbl  (9): INCIDENT_ID, DATA_YEAR, ADULT_VICTIM_COUNT, JUVENILE_VICTIM_COUNT,...
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## Analyse des données
 
-``` r
-crime <- hate_crime %>%
-  select(DATA_YEAR, STATE_NAME) %>%
-  filter(DATA_YEAR >= "2000")
-crime
-```
+#### Première étape:
 
-    ## # A tibble: 143,931 × 2
-    ##    DATA_YEAR STATE_NAME
+Tout d’abord,
+
+    ## # A tibble: 65,863 × 2
+    ##    DATA_YEAR STATE_ABBR
     ##        <dbl> <chr>     
-    ##  1      2000 Alaska    
-    ##  2      2000 Alaska    
-    ##  3      2000 Alaska    
-    ##  4      2000 Alaska    
-    ##  5      2000 Arkansas  
-    ##  6      2000 Arkansas  
-    ##  7      2000 Arkansas  
-    ##  8      2000 Arizona   
-    ##  9      2000 Arizona   
-    ## 10      2000 Arizona   
-    ## # ℹ 143,921 more rows
+    ##  1      2010 AK        
+    ##  2      2010 AK        
+    ##  3      2010 AK        
+    ##  4      2010 AK        
+    ##  5      2010 AK        
+    ##  6      2010 AK        
+    ##  7      2010 AK        
+    ##  8      2010 AL        
+    ##  9      2010 AL        
+    ## 10      2010 AL        
+    ## # ℹ 65,853 more rows
+
+Maintenant,
+
+    ## # A tibble: 10 × 2
+    ## # Groups:   STATE_ABBR [10]
+    ##    STATE_ABBR     n
+    ##    <chr>      <int>
+    ##  1 CA          9600
+    ##  2 NY          5910
+    ##  3 NJ          4956
+    ##  4 MI          4009
+    ##  5 MA          3699
+    ##  6 WA          3561
+    ##  7 OH          3554
+    ##  8 TX          2239
+    ##  9 AZ          2206
+    ## 10 KY          2035
+
+![](ProjetFinal_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+
+Comme nous pouvons le constater, l’état de la Californie et de New York
+ont tous deux le taux de crime le plus élevé des États-Unis depuis 2010
