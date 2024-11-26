@@ -6,14 +6,23 @@ output: github_document
 ---
 
 ```{r}
+#| label: setup
+#| include: false
+
+```
+
+```{r}
 #| label: load-packages
 #| message: false
 
-library(tidyverse) 
+library(tidyverse)
+
 ```
 
-
 ```{r}
+#| label: load-data
+#| messsage: false 
+
 hate_crime <- read_csv("data/hate_crime.csv")
 ```
 
