@@ -24,6 +24,8 @@ library(tidyverse)
 #| message: false
 
 hate_crime <- read_csv("data/hate_crime.csv")
+Crime_NY <- read_csv("data/final_data.csv")
+Crime_LA <- read_csv("data/crimes_all_cleaned.csv")
 
 ```
 ## Introduction
@@ -52,12 +54,23 @@ top10 <- crime %>%
   head(n = 10)
 top10
 
-ggplot(top10, aes(x = STATE_ABBR, y = n)) + geom_col()
+ggplot(top10, aes(x = STATE_ABBR, y = n, fill = n)) + geom_col()  + labs(x = "États", y = "Nombre d'actes criminels", title = "Les 10 États les plus criminalisées des États-Unis", subtitle = "Depuis 2010")
 
 ```
 
 Comme nous pouvons le constater, l'état de la Californie et de New York ont tous deux le taux de crime le plus élevé des États-Unis depuis 2010
 
+
+Sélection des crimes entre 2010 et 2019 dans chacune des bases de données
 ```{r}
 
+crime_NY <- Crime_NY %>%
+  filter(year >= "2010", year <= "2019")
+crime_NY
+
+crime_LA <- Crime_LA %>%
+  filter(occured_date >= "2010-01-01", occured_date <= "2020-01-01")
+crime_LA
+
 ```
+
