@@ -29,20 +29,18 @@ Tout d’abord,
 
 Maintenant,
 
-    ## # A tibble: 10 × 2
-    ## # Groups:   STATE_ABBR [10]
-    ##    STATE_ABBR     n
-    ##    <chr>      <int>
-    ##  1 CA          9600
-    ##  2 NY          5910
-    ##  3 NJ          4956
-    ##  4 MI          4009
-    ##  5 MA          3699
-    ##  6 WA          3561
-    ##  7 OH          3554
-    ##  8 TX          2239
-    ##  9 AZ          2206
-    ## 10 KY          2035
+| STATE_ABBR |    n |
+|:-----------|-----:|
+| CA         | 9600 |
+| NY         | 5910 |
+| NJ         | 4956 |
+| MI         | 4009 |
+| MA         | 3699 |
+| WA         | 3561 |
+| OH         | 3554 |
+| TX         | 2239 |
+| AZ         | 2206 |
+| KY         | 2035 |
 
 ![](ProjetFinal_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 

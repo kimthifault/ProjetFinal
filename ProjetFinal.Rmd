@@ -42,7 +42,8 @@ Tout d'abord,
 crime <- hate_crime %>%
   select(DATA_YEAR, STATE_ABBR) %>%
   filter(DATA_YEAR >= "2010")
-crime
+(crime)
+
 ```
 
 Maintenant, 
@@ -52,7 +53,8 @@ top10 <- crime %>%
   group_by(STATE_ABBR) %>%
   count(STATE_ABBR, sort = TRUE) %>%
   head(n = 10)
-top10
+knitr::kable(top10)
+
 
 ggplot(top10, aes(x = STATE_ABBR, y = n, fill = n)) + geom_col()  + labs(x = "États", y = "Nombre d'actes criminels", title = "Les 10 États les plus criminalisées des États-Unis", subtitle = "Depuis 2010")
 
