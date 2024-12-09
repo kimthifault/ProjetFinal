@@ -76,11 +76,13 @@ crime_la
 
 ```
 
+
 ```{r}
 
-annee <- crime_ny %>%
-  group_by(year)%>%
-  count(year, sort = TRUE)
-annee
+area <- crime_ny %>%
+  count(BORO_NM, sort = TRUE)
+knitr::kable(area)
+
+ggplot(area, aes(x = BORO_NM, y = n)) + geom_col()
 
 ```

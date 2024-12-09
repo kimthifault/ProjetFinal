@@ -87,17 +87,13 @@ données
     ## # ℹ 6 more variables: victim_sex <chr>, victim_descent <chr>, weapon <chr>,
     ## #   status <chr>, lat <dbl>, lon <dbl>
 
-    ## # A tibble: 10 × 2
-    ## # Groups:   year [10]
-    ##     year      n
-    ##    <dbl>  <int>
-    ##  1  2010 506086
-    ##  2  2012 500891
-    ##  3  2011 495096
-    ##  4  2013 492172
-    ##  5  2014 488560
-    ##  6  2016 476375
-    ##  7  2015 475514
-    ##  8  2017 466178
-    ##  9  2018 460241
-    ## 10  2019 456597
+| BORO_NM       |       n |
+|:--------------|--------:|
+| BROOKLYN      | 1440200 |
+| MANHATTAN     | 1150842 |
+| BRONX         | 1048342 |
+| QUEENS        |  955653 |
+| STATEN ISLAND |  220579 |
+| UNKNOWN       |    2094 |
+
+![](ProjetFinal_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
