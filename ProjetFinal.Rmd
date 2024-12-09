@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r}
 #| label: load-packages
 #| message: false
-#| 
+ 
 library(tidyverse)
 
 ```
@@ -42,7 +42,7 @@ Tout d'abord,
 crime <- hate_crime %>%
   select(DATA_YEAR, STATE_ABBR) %>%
   filter(DATA_YEAR >= "2010")
-(crime)
+crime
 
 ```
 
@@ -66,13 +66,21 @@ Comme nous pouvons le constater, l'état de la Californie et de New York ont tou
 Sélection des crimes entre 2010 et 2019 dans chacune des bases de données
 ```{r}
 
-crime_NY <- Crime_NY %>%
+crime_ny <- Crime_NY %>%
   filter(year >= "2010", year <= "2019")
-crime_NY
+crime_ny
 
-crime_LA <- Crime_LA %>%
+crime_la <- Crime_LA %>%
   filter(occured_date >= "2010-01-01", occured_date <= "2020-01-01")
-crime_LA
+crime_la
 
 ```
 
+```{r}
+
+annee <- crime_ny %>%
+  group_by(year)%>%
+  count(year, sort = TRUE)
+annee
+
+```

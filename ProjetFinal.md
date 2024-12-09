@@ -86,3 +86,18 @@ données
     ## # ℹ 713,966 more rows
     ## # ℹ 6 more variables: victim_sex <chr>, victim_descent <chr>, weapon <chr>,
     ## #   status <chr>, lat <dbl>, lon <dbl>
+
+    ## # A tibble: 10 × 2
+    ## # Groups:   year [10]
+    ##     year      n
+    ##    <dbl>  <int>
+    ##  1  2010 506086
+    ##  2  2012 500891
+    ##  3  2011 495096
+    ##  4  2013 492172
+    ##  5  2014 488560
+    ##  6  2016 476375
+    ##  7  2015 475514
+    ##  8  2017 466178
+    ##  9  2018 460241
+    ## 10  2019 456597
