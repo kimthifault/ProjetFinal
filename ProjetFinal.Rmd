@@ -76,6 +76,31 @@ crime_la
 
 ```
 
+Voici, pour chaque ville, la date exacte ou il y a eu le plus de criminalité
+```{r}
+
+date_ultime_LA <- crime_la |>
+  count(occured_date, sort = TRUE) |>
+  head(n = 1)
+knitr::kable(date_ultime_LA)
+
+date_ultime_NY <- crime_ny |>
+  count(year, month, day, sort = TRUE) |>
+  head(n = 1)
+knitr::kable(date_ultime_NY)
+```
+Comme on le constate
+
+
+```{r}
+
+
+```
+
+```{r}
+
+```
+
 
 ```{r}
 
@@ -86,3 +111,6 @@ knitr::kable(area)
 ggplot(area, aes(x = BORO_NM, y = n)) + geom_col()
 
 ```
+
+
+## Bibliographie

@@ -87,6 +87,19 @@ données
     ## # ℹ 6 more variables: victim_sex <chr>, victim_descent <chr>, weapon <chr>,
     ## #   status <chr>, lat <dbl>, lon <dbl>
 
+Voici, pour chaque ville, la date exacte ou il y a eu le plus de
+criminalité
+
+| occured_date |   n |
+|:-------------|----:|
+| 2010-01-01   | 741 |
+
+| year | month | day |    n |
+|-----:|------:|----:|-----:|
+| 2010 |     1 |   1 | 2481 |
+
+Comme on le constate
+
 | BORO_NM       |       n |
 |:--------------|--------:|
 | BROOKLYN      | 1440200 |
@@ -96,4 +109,6 @@ données
 | STATEN ISLAND |  220579 |
 | UNKNOWN       |    2094 |
 
-![](ProjetFinal_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](ProjetFinal_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+
+## Bibliographie
