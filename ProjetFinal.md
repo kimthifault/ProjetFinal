@@ -1,6 +1,6 @@
 Projet final - Kim Thifault et Laurie Labonté
 ================
-16 décembre 2024
+20 décembre 2024
 
 ## Introduction
 
@@ -178,12 +178,34 @@ Comme on le constate
 | PROPERTY  |   13 | 117409 |
 | PROPERTY  |    0 | 112908 |
 
-| saison    |       n |
-|:----------|--------:|
-| Été       | 1280824 |
-| Printemps | 1237142 |
-| Automne   | 1177300 |
-| Hiver     | 1122444 |
+| saison    | BORO_NM       |      n |
+|:----------|:--------------|-------:|
+| Été       | BROOKLYN      | 387354 |
+| Printemps | BROOKLYN      | 369729 |
+| Automne   | BROOKLYN      | 349214 |
+| Hiver     | BROOKLYN      | 333903 |
+| Été       | MANHATTAN     | 303508 |
+| Printemps | MANHATTAN     | 295068 |
+| Automne   | MANHATTAN     | 283501 |
+| Été       | BRONX         | 278082 |
+| Hiver     | MANHATTAN     | 268765 |
+| Printemps | BRONX         | 268495 |
+| Automne   | BRONX         | 255333 |
+| Été       | QUEENS        | 253497 |
+| Hiver     | BRONX         | 246432 |
+| Printemps | QUEENS        | 244355 |
+| Automne   | QUEENS        | 235460 |
+| Hiver     | QUEENS        | 222341 |
+| Été       | STATEN ISLAND |  58364 |
+| Printemps | STATEN ISLAND |  57462 |
+| Automne   | STATEN ISLAND |  53772 |
+| Hiver     | STATEN ISLAND |  50981 |
+| Printemps | UNKNOWN       |   2033 |
+| Hiver     | UNKNOWN       |     22 |
+| Automne   | UNKNOWN       |     20 |
+| Été       | UNKNOWN       |     19 |
+
+![](ProjetFinal_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 | BORO_NM       |       n |
 |:--------------|--------:|
@@ -195,6 +217,23 @@ Comme on le constate
 | UNKNOWN       |    2094 |
 
 ![](ProjetFinal_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+
+    ## # A tibble: 3,314,353 × 3
+    ##    VIC_AGE_GROUP BORO_NM   month
+    ##    <chr>         <chr>     <dbl>
+    ##  1 25-44         QUEENS       12
+    ##  2 25-44         QUEENS       12
+    ##  3 18-24         BRONX        12
+    ##  4 45-64         MANHATTAN    12
+    ##  5 25-44         MANHATTAN    12
+    ##  6 <18           BRONX        12
+    ##  7 18-24         BRONX        12
+    ##  8 65+           BROOKLYN     12
+    ##  9 25-44         BRONX        12
+    ## 10 <18           BRONX        12
+    ## # ℹ 3,314,343 more rows
+
+![](ProjetFinal_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
 | area        |     n |
 |:------------|------:|
@@ -209,6 +248,23 @@ Comme on le constate
 | Mission     | 32598 |
 | Hollenbeck  | 29979 |
 
-![](ProjetFinal_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![](ProjetFinal_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+
+    ## # A tibble: 293,605 × 3
+    ##    area        victim_sex victim_age
+    ##    <chr>       <chr>           <dbl>
+    ##  1 77th Street F                  30
+    ##  2 Southwest   M                  49
+    ##  3 Hollywood   F                  47
+    ##  4 Southwest   M                  52
+    ##  5 Central     F                  47
+    ##  6 Central     M                  51
+    ##  7 Central     M                  30
+    ##  8 Central     F                  38
+    ##  9 Central     M                  40
+    ## 10 Central     F                  29
+    ## # ℹ 293,595 more rows
+
+![](ProjetFinal_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
 ## Bibliographie

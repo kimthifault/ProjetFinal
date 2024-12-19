@@ -1,6 +1,6 @@
 ---
 title: "Projet final - Kim Thifault et Laurie Labonté"
-date: "16 décembre 2024"
+date: "20 décembre 2024"
 output: github_document
 ---
 
@@ -128,10 +128,13 @@ knitr::kable(crime_heure_ny)
 ```
 
 ```{r}
-saison <- crime_ny|>
+saison_ny <- crime_ny|>
+  select(month, BORO_NM)|>
   mutate(saison = case_when(month %in% c(4,5,6) ~ "Printemps", month %in% c(7,8,9) ~ "Été", month %in% c(10,11,12) ~ "Automne", month %in% c(1,2,3) ~ "Hiver"))|>
-  count(saison, sort = TRUE)
-knitr::kable(saison)
+  count(saison, BORO_NM, sort = TRUE)
+knitr::kable(saison_ny)
+
+ggplot(saison_ny, aes(x = BORO_NM, fill = saison)) + geom_bar()
 ```
 
 
@@ -145,6 +148,16 @@ ggplot(area, aes(x = BORO_NM, y = n)) + geom_col()
 
 ```
 
+
+```{r}
+age <- crime_ny |>
+  select(VIC_AGE_GROUP, BORO_NM, month)|>
+  filter(VIC_AGE_GROUP != "UNKNOWN")
+age
+
+ggplot(age, aes(x = VIC_AGE_GROUP, fill = BORO_NM)) + geom_bar(position = "fill")
+```
+
 ```{r}
 area_la <- crime_la |>
   count(area, sort = TRUE)|>
@@ -153,6 +166,16 @@ knitr::kable(area_la)
   
 
 ggplot(area_la, aes(x = area, y = n)) + geom_col()
+```
+
+```{r}
+age_la <- crime_la |>
+  select(area, victim_sex, victim_age)|>
+  filter(victim_sex != "N", victim_sex != "H", victim_sex != "X")|>
+  filter(area =="77th Street" | area == "Central" | area == "Southwest" | area == "Southeast" | area == "Newton" | area == "Hollywood")
+age_la
+
+ggplot(age_la, aes(x = victim_age, y = victim_sex)) + geom_violin() + facet_wrap(~area)
 ```
 
 
