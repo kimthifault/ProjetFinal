@@ -94,11 +94,96 @@ criminalité
 |:-------------|----:|
 | 2010-01-01   | 741 |
 
-| year | month | day |    n |
-|-----:|------:|----:|-----:|
-| 2010 |     1 |   1 | 2481 |
+| day | month | year |    n |
+|----:|------:|-----:|-----:|
+|   1 |     1 | 2010 | 2481 |
 
 Comme on le constate
+
+| occured_time |     n |
+|:-------------|------:|
+| 12:00:00     | 18213 |
+| 20:00:00     | 13984 |
+| 18:00:00     | 13903 |
+| 21:00:00     | 13435 |
+| 22:00:00     | 13351 |
+| 19:00:00     | 12787 |
+| 17:00:00     | 12567 |
+| 16:00:00     | 12359 |
+| 15:00:00     | 12142 |
+| 23:00:00     | 11922 |
+
+| weapon                                         | occured_time |     n |
+|:-----------------------------------------------|:-------------|------:|
+| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 12:00:00     | 12389 |
+| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 20:00:00     |  8859 |
+| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 18:00:00     |  8764 |
+| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 22:00:00     |  8512 |
+| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 21:00:00     |  8500 |
+| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 19:00:00     |  7831 |
+| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 17:00:00     |  7779 |
+| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 23:00:00     |  7777 |
+| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 16:00:00     |  7760 |
+| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 15:00:00     |  7672 |
+
+| crime                    | occured_time |    n |
+|:-------------------------|:-------------|-----:|
+| BATTERY - SIMPLE ASSAULT | 18:00:00     | 3577 |
+| BATTERY - SIMPLE ASSAULT | 12:00:00     | 3564 |
+| BATTERY - SIMPLE ASSAULT | 20:00:00     | 3440 |
+| BATTERY - SIMPLE ASSAULT | 15:00:00     | 3394 |
+| BATTERY - SIMPLE ASSAULT | 16:00:00     | 3390 |
+| BATTERY - SIMPLE ASSAULT | 17:00:00     | 3345 |
+| BATTERY - SIMPLE ASSAULT | 19:00:00     | 3266 |
+| BATTERY - SIMPLE ASSAULT | 21:00:00     | 3254 |
+| BATTERY - SIMPLE ASSAULT | 14:00:00     | 3209 |
+| BATTERY - SIMPLE ASSAULT | 22:00:00     | 3055 |
+
+| hour |      n |
+|-----:|-------:|
+|   15 | 288710 |
+|   18 | 284995 |
+|   17 | 282476 |
+|   16 | 281060 |
+|   19 | 271500 |
+|   12 | 267991 |
+|   20 | 267438 |
+|   14 | 257759 |
+|   21 | 241024 |
+|    0 | 230859 |
+
+| PREM_TYP_DESC | hour |     n |
+|:--------------|-----:|------:|
+| STREET        |   20 | 93577 |
+| STREET        |   19 | 90967 |
+| STREET        |   18 | 90894 |
+| STREET        |   21 | 89958 |
+| STREET        |   22 | 89799 |
+| STREET        |   17 | 85053 |
+| STREET        |   23 | 83320 |
+| STREET        |   15 | 82578 |
+| STREET        |   16 | 82184 |
+| STREET        |    0 | 76431 |
+
+| OFNS_DESC | hour |      n |
+|:----------|-----:|-------:|
+| PROPERTY  |   12 | 147676 |
+| PROPERTY  |   15 | 146065 |
+| PROPERTY  |   18 | 143470 |
+| PROPERTY  |   17 | 143411 |
+| PROPERTY  |   16 | 143257 |
+| PROPERTY  |   14 | 130492 |
+| PROPERTY  |   19 | 130201 |
+| PROPERTY  |   20 | 123259 |
+| PROPERTY  |   13 | 117409 |
+| PROPERTY  |    0 | 112908 |
+
+| saison    |       n |
+|:----------|--------:|
+| Été       | 1280824 |
+| Printemps | 1237142 |
+| Automne   | 1177300 |
+| Hiver     | 1122444 |
 
 | BORO_NM       |       n |
 |:--------------|--------:|
@@ -109,6 +194,21 @@ Comme on le constate
 | STATEN ISLAND |  220579 |
 | UNKNOWN       |    2094 |
 
-![](ProjetFinal_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](ProjetFinal_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+
+| area        |     n |
+|:------------|------:|
+| 77th Street | 68433 |
+| Southeast   | 58084 |
+| Southwest   | 54348 |
+| Newton      | 43437 |
+| Central     | 40482 |
+| Rampart     | 38959 |
+| Olympic     | 36987 |
+| Hollywood   | 33000 |
+| Mission     | 32598 |
+| Hollenbeck  | 29979 |
+
+![](ProjetFinal_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
 ## Bibliographie

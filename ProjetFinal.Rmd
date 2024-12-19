@@ -85,7 +85,7 @@ date_ultime_LA <- crime_la |>
 knitr::kable(date_ultime_LA)
 
 date_ultime_NY <- crime_ny |>
-  count(year, month, day, sort = TRUE) |>
+  count(day, month, year, sort = TRUE) |>
   head(n = 1)
 knitr::kable(date_ultime_NY)
 ```
@@ -93,12 +93,45 @@ Comme on le constate
 
 
 ```{r}
+heure <- crime_la|>
+  count(occured_time, sort = TRUE) |>
+  head(n = 10)
+knitr::kable(heure)
 
+arme_heure <- crime_la|>
+  count(weapon, occured_time, sort = TRUE)|>
+  head(n = 10)
+knitr::kable(arme_heure)
+
+crime_heure <- crime_la|>
+  count(crime, occured_time, sort = TRUE)|>
+  head(n = 10)
+knitr::kable(crime_heure)
 
 ```
 
 ```{r}
+heure_ny <- crime_ny|>
+  count(hour, sort = TRUE) |>
+  head(n = 10)
+knitr::kable(heure_ny)
 
+lieu_heure <- crime_ny|>
+  count(PREM_TYP_DESC, hour, sort = TRUE)|>
+  head(n = 10)
+knitr::kable(lieu_heure)
+
+crime_heure_ny <- crime_ny|>
+  count(OFNS_DESC, hour, sort = TRUE)|>
+  head(n = 10)
+knitr::kable(crime_heure_ny)
+```
+
+```{r}
+saison <- crime_ny|>
+  mutate(saison = case_when(month %in% c(4,5,6) ~ "Printemps", month %in% c(7,8,9) ~ "Été", month %in% c(10,11,12) ~ "Automne", month %in% c(1,2,3) ~ "Hiver"))|>
+  count(saison, sort = TRUE)
+knitr::kable(saison)
 ```
 
 
@@ -110,6 +143,16 @@ knitr::kable(area)
 
 ggplot(area, aes(x = BORO_NM, y = n)) + geom_col()
 
+```
+
+```{r}
+area_la <- crime_la |>
+  count(area, sort = TRUE)|>
+  head(n = 10)
+knitr::kable(area_la)
+  
+
+ggplot(area_la, aes(x = area, y = n)) + geom_col()
 ```
 
 
