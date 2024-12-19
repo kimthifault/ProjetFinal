@@ -16,6 +16,8 @@ knitr::opts_chunk$set(echo = FALSE)
 #| message: false
  
 library(tidyverse)
+library(tidymodels)
+library(lubridate)
 
 ```
 
@@ -129,12 +131,9 @@ knitr::kable(crime_heure_ny)
 
 ```{r}
 saison_ny <- crime_ny|>
-  select(month, BORO_NM)|>
   mutate(saison = case_when(month %in% c(4,5,6) ~ "Printemps", month %in% c(7,8,9) ~ "Été", month %in% c(10,11,12) ~ "Automne", month %in% c(1,2,3) ~ "Hiver"))|>
-  count(saison, BORO_NM, sort = TRUE)
+  count(saison, sort = TRUE)
 knitr::kable(saison_ny)
-
-ggplot(saison_ny, aes(x = BORO_NM, fill = saison)) + geom_bar()
 ```
 
 
@@ -177,6 +176,7 @@ age_la
 
 ggplot(age_la, aes(x = victim_age, y = victim_sex)) + geom_violin() + facet_wrap(~area)
 ```
+
 
 
 ## Bibliographie

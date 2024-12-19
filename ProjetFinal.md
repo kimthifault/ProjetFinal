@@ -178,34 +178,12 @@ Comme on le constate
 | PROPERTY  |   13 | 117409 |
 | PROPERTY  |    0 | 112908 |
 
-| saison    | BORO_NM       |      n |
-|:----------|:--------------|-------:|
-| Été       | BROOKLYN      | 387354 |
-| Printemps | BROOKLYN      | 369729 |
-| Automne   | BROOKLYN      | 349214 |
-| Hiver     | BROOKLYN      | 333903 |
-| Été       | MANHATTAN     | 303508 |
-| Printemps | MANHATTAN     | 295068 |
-| Automne   | MANHATTAN     | 283501 |
-| Été       | BRONX         | 278082 |
-| Hiver     | MANHATTAN     | 268765 |
-| Printemps | BRONX         | 268495 |
-| Automne   | BRONX         | 255333 |
-| Été       | QUEENS        | 253497 |
-| Hiver     | BRONX         | 246432 |
-| Printemps | QUEENS        | 244355 |
-| Automne   | QUEENS        | 235460 |
-| Hiver     | QUEENS        | 222341 |
-| Été       | STATEN ISLAND |  58364 |
-| Printemps | STATEN ISLAND |  57462 |
-| Automne   | STATEN ISLAND |  53772 |
-| Hiver     | STATEN ISLAND |  50981 |
-| Printemps | UNKNOWN       |   2033 |
-| Hiver     | UNKNOWN       |     22 |
-| Automne   | UNKNOWN       |     20 |
-| Été       | UNKNOWN       |     19 |
-
-![](ProjetFinal_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+| saison    |       n |
+|:----------|--------:|
+| Été       | 1280824 |
+| Printemps | 1237142 |
+| Automne   | 1177300 |
+| Hiver     | 1122444 |
 
 | BORO_NM       |       n |
 |:--------------|--------:|
