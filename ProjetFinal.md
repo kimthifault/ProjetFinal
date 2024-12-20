@@ -369,9 +369,10 @@ masculins.
     ## 10 Central     F                  29
     ## # ℹ 293,595 more rows
 
-![](ProjetFinal_files/figure-gfm/unnamed-chunk-14-1.png)<!-- --> Dans
-cette visualisation, nous pouvons constater que les femmes de 25 ans
-sont le groupe d’âge le plus touchée, tandis que chez les hommes, on
+![](ProjetFinal_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+
+Dans cette visualisation, nous pouvons constater que les femmes de 25
+ans sont le groupe d’âge le plus touchée, tandis que chez les hommes, on
 peut voir une plus grande dispersion, mais quand même près de 25 ans
 aussi.
 
@@ -394,7 +395,7 @@ comme étant que l’âge moyen des victimes est de 33 ans.
     ##  7         7  33.0
     ##  8         8  33.0
     ##  9         9  33.0
-    ## 10        10  33.0
+    ## 10        10  33.1
     ## # ℹ 490 more rows
 
     ## Response: victim_age (numeric)
@@ -415,7 +416,7 @@ l’hypothèse nulle. Calculons donc le p exact.
     ## # A tibble: 1 × 1
     ##   p_value
     ##     <dbl>
-    ## 1   0.676
+    ## 1    0.64
 
 La valeur exacte de p est égale à 0.712. Puisque cette valeur est
 supérieure au niveau de signification préétablie au début du test, soit

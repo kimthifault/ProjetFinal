@@ -194,6 +194,7 @@ age_la
 
 ggplot(age_la, aes(x = victim_age, y = victim_sex)) + geom_violin() + facet_wrap(~area) + labs(x = "Âge de la victime", y = "Sexe de la victime", title = "Âge et sexe des victimes en fonction du secteur", subtitle = "Los Angeles")
 ```
+
 Dans cette visualisation, nous pouvons constater que les femmes de 25 ans sont le groupe d’âge le plus touchée, tandis que chez les hommes, on peut voir une plus grande dispersion, mais quand même près de 25 ans aussi.
 
 En dernier lieu, nous voulions effectuer un test d'hypothèse afin de vérifier l'âge moyen des victimes de Los Angeles (nous utiliserons un niveau de signification de 0,05). Nous poserons notre hypothèse nulle comme étant que l'âge moyen des victimes est de 33 ans.
