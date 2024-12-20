@@ -1,5 +1,5 @@
 ---
-title: "Projet final - Kim Thifault et Laurie Labonté"
+title: "Projet final - Laurie Labonté et Kim Thifault"
 date: "20 décembre 2024"
 output: github_document
 ---

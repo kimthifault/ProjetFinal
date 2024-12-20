@@ -1,4 +1,4 @@
-Projet final - Kim Thifault et Laurie Labonté
+Projet final - Laurie Labonté et Kim Thifault
 ================
 20 décembre 2024
 
@@ -395,7 +395,7 @@ comme étant que l’âge moyen des victimes est de 33 ans.
     ##  7         7  33.0
     ##  8         8  33.0
     ##  9         9  33.0
-    ## 10        10  33.1
+    ## 10        10  33.0
     ## # ℹ 490 more rows
 
     ## Response: victim_age (numeric)
@@ -416,7 +416,7 @@ l’hypothèse nulle. Calculons donc le p exact.
     ## # A tibble: 1 × 1
     ##   p_value
     ##     <dbl>
-    ## 1    0.64
+    ## 1   0.648
 
 La valeur exacte de p est égale à 0.712. Puisque cette valeur est
 supérieure au niveau de signification préétablie au début du test, soit
