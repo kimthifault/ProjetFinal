@@ -159,8 +159,8 @@ les crimes ayant eu lieu entre 2010 et 2019.
     ## # ℹ 6 more variables: victim_sex <chr>, victim_descent <chr>, weapon <chr>,
     ## #   status <chr>, lat <dbl>, lon <dbl>
 
-En premier lieu, nous trouvions intéressant de savoir la date exacte où
-il y a eu le plus de criminalité.
+En premier lieu, nous trouvions intéressant de connaître la date exacte
+où il y a eu le plus de criminalité.
 
 | occured_date |   n |
 |:-------------|----:|
@@ -170,7 +170,17 @@ il y a eu le plus de criminalité.
 |----:|------:|-----:|-----:|
 |   1 |     1 | 2010 | 2481 |
 
-Comme on le constate
+Avec ce code, nous avons réalisé que la date avec le plus haut taux de
+crime était le 1 janvier 2010. Nous avons donc investigué un peu, afin
+de comprendre la raison de ce moment. Nous n’avons malheureusement pas
+trouvé de source suffisamment pertinente pour établir un lien direct
+avec la date. Cependant, nous avons émis l’hypothèse que la nuit du jour
+de l’an peut être un élément déclencheur qui peut créer plusieurs
+batailles ou remises en question chez certains. De plus, il est possible
+que les autorités mettent à échéance certains dossiers le premier
+janvier et commencer l’année en fermant certains cas. Encore une fois,
+ce ne sont que des hypothèses de notre part qui sont justifiées par la
+récurrence de cette date dans nos analyses.
 
 En deuxième lieu, nous voulions analyser, dans la ville de Los Angeles,
 les heures avec le plus haut taux de criminalités en moyenne. Ensuite,
@@ -223,10 +233,10 @@ mise de l’avant. Il y a donc une forte tendance qui porte à croire que
 ce sont plutôt les combats corps à corps qui perdurent à travers les
 années et qui occupent le rang d’arme de propension.
 
-Dans le même ordre d’idée, nous avons également analysé les heures où il
-y a eu le plus de crimes dans la ville de New York. Selon ces heures,
-nous avons voulu analyser le lieu de ces crimes ainsi que la description
-de ceux-ci.
+Dans le même ordre d’idée, nous avons voulu déterminer les heures où il
+y a eu le plus de crimes dans la ville de New York. Avec à ces
+informations, nous avons voulu déterminer le lieu de ces crimes ainsi
+que la description de ceux-ci.
 
 | hour |      n |
 |-----:|-------:|
@@ -356,7 +366,8 @@ masculins.
 
 ![](ProjetFinal_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
-Maintenat, testons si l’âge moyen des victimes de la est de 33 ans (Nous
+En dernier lieu, nous voulions effectuer un test d’hypothèse afin de
+savoir si l’âge moyen des victimes de Los Angeles est de 33 ans (Nous
 utiliserons un niveau de signification de 0,05)
 
     ## Response: victim_age (numeric)
@@ -371,7 +382,7 @@ utiliserons un niveau de signification de 0,05)
     ##  5         5  33.0
     ##  6         6  33.0
     ##  7         7  33.0
-    ##  8         8  33.1
+    ##  8         8  33.0
     ##  9         9  33.0
     ## 10        10  33.0
     ## # ℹ 490 more rows
@@ -387,7 +398,7 @@ utiliserons un niveau de signification de 0,05)
     ## # A tibble: 1 × 1
     ##   p_value
     ##     <dbl>
-    ## 1   0.644
+    ## 1    0.76
 
     ## # A tibble: 1 × 2
     ##   lower_ci upper_ci
@@ -400,7 +411,6 @@ utiliserons un niveau de signification de 0,05)
 
 1)  <https://worldpopulationreview.com/us-cities/new-york/new-york>
 2)  <https://www.security.org/resources/homeless-statistics/>
-3)  <https://developmentalpolitics.org/platform-of-policy-recommendations/homelessness-in-the-u-s/?gad>
-    source=1&gclid=Cj0KCQiAx9q6BhCDARIsACwUxu7TVseNNyTqiciXjNYTsXqm8B998agMSXHUbD3UCbFD4N7c9dxeWeYaAuacEALw_wcB
+3)  <https://developmentalpolitics.org/platform-of-policy-recommendations/homelessness-in-the-u-s/?gadsource=1&gclid=Cj0KCQiAx9q6BhCDARIsACwUxu7TVseNNyTqiciXjNYTsXqm8B998agMSXHUbD3UCbFD4N7c9dxeWeYaAuacEALw_wcB>
 4)  <https://worldpopulationreview.com/us-cities/texas>
-    5)<https://www.cbsnews.com/pictures/gun-ownership-rates-by-state/52/>
+5)  <https://www.cbsnews.com/pictures/gun-ownership-rates-by-state/52/>

@@ -72,7 +72,7 @@ top10 <- crime |>
 knitr::kable(top10)
 
 
-ggplot(top10, aes(x = STATE_ABBR, y = n, fill = n)) + geom_col()  + labs(x = "États", y = "Nombre d'actes criminels", title = "Les 10 États les plus criminalisées des États-Unis", subtitle = "Depuis 2010")
+ggplot(top10, aes(x = STATE_ABBR, y = n, fill = n)) + geom_col()  + labs(x = "États", y = "Nombre d'actes criminels", title = "Les 10 États les plus criminalisées des États-Unis", subtitle = "Depuis 2010", fill = "quantité")
 
 ```
 
@@ -89,7 +89,7 @@ crime_la
 
 ```
 
-En premier lieu, nous trouvions intéressant de savoir la date exacte où il y a eu le plus de criminalité.
+En premier lieu, nous trouvions intéressant de connaître la date exacte où il y a eu le plus de criminalité.
 ```{r}
 
 date_ultime_LA <- crime_la |>
@@ -102,7 +102,7 @@ date_ultime_NY <- crime_ny |>
   head(n = 1)
 knitr::kable(date_ultime_NY)
 ```
-Comme on le constate
+Avec ce code, nous avons réalisé que la date avec le plus haut taux de crime était le 1 janvier 2010. Nous avons donc investigué un peu, afin de comprendre la raison de ce moment. Nous n’avons malheureusement pas trouvé de source suffisamment pertinente pour établir un lien direct avec la date. Cependant, nous avons émis l’hypothèse que la nuit du jour de l’an peut être un élément déclencheur qui peut créer plusieurs batailles ou remises en question chez certains. De plus, il est possible que les autorités mettent à échéance certains dossiers le premier janvier et commencer l’année en fermant certains cas. Encore une fois, ce ne sont que des hypothèses de notre part qui sont justifiées par la récurrence de cette date dans nos analyses. 
 
 En deuxième lieu, nous voulions analyser, dans la ville de Los Angeles, les heures avec le plus haut taux de criminalités en moyenne. Ensuite, selon ces heures, nous voulions savoir quelle serait l'arme utilisée et quel serait le crime comis.
 ```{r}
@@ -124,7 +124,7 @@ knitr::kable(crime_heure)
 ```
 Nous pouvons constater que 12pm, 8pm ainsi que 6pm sont les trois heures où le taux de crime est le plus élevé à Los Angeles. En ce qui attrait de l'arme de prédilection lors des crimes recensés, la force brute est mise de l'avant. Il y a donc une forte tendance qui porte à croire que ce sont plutôt les combats corps à corps qui perdurent à travers les années et qui occupent le rang d'arme de propension.
 
-Dans le même ordre d'idée, nous avons également analysé les heures où il y a eu le plus de crimes dans la ville de New York. Selon ces heures, nous avons voulu analyser le lieu de ces crimes ainsi que la description de ceux-ci.
+Dans le même ordre d'idée, nous avons voulu déterminer les heures où il y a eu le plus de crimes dans la ville de New York. Avec à ces informations, nous avons voulu déterminer le lieu de ces crimes ainsi que la description de ceux-ci.
 ```{r}
 heure_ny <- crime_ny |>
   count(hour, sort = TRUE) |>
@@ -159,7 +159,7 @@ area <- crime_ny |>
   count(BORO_NM, sort = TRUE)
 knitr::kable(area)
 
-ggplot(area, aes(x = BORO_NM, y = n)) + geom_col()
+ggplot(area, aes(x = BORO_NM, y = n, fill = n)) + geom_col() + labs(x = "Quartiers", y = "Nombre d'actes criminels", title = "Criminalité en fonction des secteurs", subtitle = "New York", fill = "quantité")
 
 ```
 
@@ -170,7 +170,7 @@ age <- crime_ny |>
   filter(VIC_AGE_GROUP != "UNKNOWN")
 age
 
-ggplot(age, aes(x = VIC_AGE_GROUP, fill = BORO_NM)) + geom_bar(position = "fill")
+ggplot(age, aes(x = VIC_AGE_GROUP, fill = BORO_NM)) + geom_bar(position = "fill") + labs(x = "Âge des victimes", y = "Nombre d'actes criminels", title = "Âge des victimes en fonction des secteurs", subtitle = "New York", fill = "secteurs")
 ```
 
 Pour ce qui est des secteurs de Los Angeles, nous nous interessions également à l'âge des victimes dans chaque quartier, mais plus précisément de la différence entre les victimes de sexes féminins et masculins.
@@ -181,7 +181,7 @@ area_la <- crime_la |>
 knitr::kable(area_la)
   
 
-ggplot(area_la, aes(x = area, y = n)) + geom_col()
+ggplot(area_la, aes(x = area, y = n, fill = n)) + geom_col() + labs(x = "Secteurs", y = "Nombre d'actes criminels", title = "Criminalité en fonction des secteurs", subtitle = "Los Angeles", fill = "quantité")
 ```
 
 ```{r}
@@ -191,10 +191,10 @@ age_la <- crime_la |>
   filter(area =="77th Street" | area == "Central" | area == "Southwest" | area == "Southeast" | area == "Newton" | area == "Hollywood")
 age_la
 
-ggplot(age_la, aes(x = victim_age, y = victim_sex)) + geom_violin() + facet_wrap(~area)
+ggplot(age_la, aes(x = victim_age, y = victim_sex)) + geom_violin() + facet_wrap(~area) + labs(x = "Âge de la victime", y = "Sexe de la victime", title = "Âge et sexe des victimes en fonction du secteur", subtitle = "Los Angeles")
 ```
 
-Maintenat, testons si l'âge moyen des victimes de la est de 33 ans (Nous utiliserons un niveau de signification de 0,05)
+En dernier lieu, nous voulions effectuer un test d'hypothèse afin de savoir si l'âge moyen des victimes de Los Angeles est de 33 ans (Nous utiliserons un niveau de signification de 0,05)
 ```{r}
 test<- crime_la |>
   specify(response = victim_age) |>
@@ -242,5 +242,6 @@ boot_dist |>
 
 1) https://worldpopulationreview.com/us-cities/new-york/new-york
 2) https://www.security.org/resources/homeless-statistics/ 
-3) https://developmentalpolitics.org/platform-of-policy-recommendations/homelessness-in-the-u-s/?gad source=1&gclid=Cj0KCQiAx9q6BhCDARIsACwUxu7TVseNNyTqiciXjNYTsXqm8B998agMSXHUbD3UCbFD4N7c9dxeWeYaAuacEALw_wcB 
-4) https://worldpopulationreview.com/us-cities/texas 5)https://www.cbsnews.com/pictures/gun-ownership-rates-by-state/52/ 
+3) https://developmentalpolitics.org/platform-of-policy-recommendations/homelessness-in-the-u-s/?gadsource=1&gclid=Cj0KCQiAx9q6BhCDARIsACwUxu7TVseNNyTqiciXjNYTsXqm8B998agMSXHUbD3UCbFD4N7c9dxeWeYaAuacEALw_wcB 
+4) https://worldpopulationreview.com/us-cities/texas 
+5) https://www.cbsnews.com/pictures/gun-ownership-rates-by-state/52/ 
