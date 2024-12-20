@@ -6,11 +6,30 @@ Projet final - Kim Thifault et Laurie Labonté
 
 ## Données
 
+Pour trouver les deux villes avec le plus haut taux de criminalité, nous
+avons élaboré un graphique avec le jeu de donnée « hate_crime.csv ». Il
+présente des informations sur la criminalité des États_unis depuis 1991,
+spécifiquement sur les États du pays. Ce jeu de donnée est constitué de
+28 colonnes et 209 442 lignes. Grâce à celui-ci, nous avons pu constater
+que ce n’était pas Texas, mais plutôt la Californie qui contenait le
+plus de crimes comptabilisés. Nous prendrons donc nos données sur la
+plus grande ville de cet état, soit Los Angeles. Pour ce qui est du
+deuxième état le plus criminalisé, il s’agissait de New York. Selon le
+même raisonnement, nous allons prendre des données sur la ville de New
+York. Il était donc primordial de trouver deux jeux de donnée pour
+entamer notre analyse. Le premier jeu de donnée est pour la ville de New
+York et se nomme « final_data.csv ». Il contient 13 colonnes et 1 038
+051 lignes. Le deuxième est donc pour la ville de Los Angeles et se
+nomme « crimes_all_cleaned.csv ». Celui-ci est constitué de 26 colonnes
+et 7 747 417 lignes. Les jeux de donnée proviennent du site de base de
+donné «Kaggle».
+
 ## Analyse des données
 
 #### Première étape:
 
-Tout d’abord,
+Tout d’abord, nous allons limiter notre base de donnée sur les crimes
+ayant eu lieu entre 2010 et 2019.
 
     ## # A tibble: 65,863 × 2
     ##    DATA_YEAR STATE_ABBR
@@ -27,7 +46,8 @@ Tout d’abord,
     ## 10      2010 AL        
     ## # ℹ 65,853 more rows
 
-Maintenant,
+Maintenant, faisons le top 10 des états les plus criminelles des
+États-Unis durant cette période.
 
 | STATE_ABBR |    n |
 |:-----------|-----:|
@@ -45,10 +65,10 @@ Maintenant,
 ![](ProjetFinal_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 Comme nous pouvons le constater, l’état de la Californie et de New York
-ont tous deux le taux de crime le plus élevé des États-Unis depuis 2010
-
-Sélection des crimes entre 2010 et 2019 dans chacune des bases de
-données
+sont les deux états ayant le taux de crime le plus élevé des États-Unis
+depuis 2010. Après avoir trouvé des bases de données appropriées pour
+chacune des villes, nous limiterons encore une fois notre sélection sur
+les crimes ayant eu lieu entre 2010 et 2019.
 
     ## # A tibble: 4,817,710 × 26
     ##    CMPLNT_NUM  year month   day weekday    hour Latitude Longitude COMPLETED
@@ -87,8 +107,8 @@ données
     ## # ℹ 6 more variables: victim_sex <chr>, victim_descent <chr>, weapon <chr>,
     ## #   status <chr>, lat <dbl>, lon <dbl>
 
-Voici, pour chaque ville, la date exacte ou il y a eu le plus de
-criminalité
+En premier lieu, nous trouvions intéressant de savoir la date exacte où
+il y a eu le plus de criminalité.
 
 | occured_date |   n |
 |:-------------|----:|
@@ -99,6 +119,11 @@ criminalité
 |   1 |     1 | 2010 | 2481 |
 
 Comme on le constate
+
+En deuxième lieu, nous voulions analyser, dans la ville de Los Angeles,
+les heures les plus criminelles en moyenne dans une journée. Ensuite,
+selon ces heures, nous voulions savoir quelle serait l’arme utilisée et
+quel serait le crime comis.
 
 | occured_time |     n |
 |:-------------|------:|
@@ -113,31 +138,40 @@ Comme on le constate
 | 15:00:00     | 12142 |
 | 23:00:00     | 11922 |
 
-| weapon                                         | occured_time |     n |
-|:-----------------------------------------------|:-------------|------:|
-| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 12:00:00     | 12389 |
-| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 20:00:00     |  8859 |
-| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 18:00:00     |  8764 |
-| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 22:00:00     |  8512 |
-| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 21:00:00     |  8500 |
-| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 19:00:00     |  7831 |
-| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 17:00:00     |  7779 |
-| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 23:00:00     |  7777 |
-| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 16:00:00     |  7760 |
-| STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 15:00:00     |  7672 |
+| occured_time | weapon                                         |     n |
+|:-------------|:-----------------------------------------------|------:|
+| 12:00:00     | STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) | 12389 |
+| 20:00:00     | STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) |  8859 |
+| 18:00:00     | STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) |  8764 |
+| 22:00:00     | STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) |  8512 |
+| 21:00:00     | STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) |  8500 |
+| 19:00:00     | STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) |  7831 |
+| 17:00:00     | STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) |  7779 |
+| 23:00:00     | STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) |  7777 |
+| 16:00:00     | STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) |  7760 |
+| 15:00:00     | STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE) |  7672 |
 
-| crime                    | occured_time |    n |
-|:-------------------------|:-------------|-----:|
-| BATTERY - SIMPLE ASSAULT | 18:00:00     | 3577 |
-| BATTERY - SIMPLE ASSAULT | 12:00:00     | 3564 |
-| BATTERY - SIMPLE ASSAULT | 20:00:00     | 3440 |
-| BATTERY - SIMPLE ASSAULT | 15:00:00     | 3394 |
-| BATTERY - SIMPLE ASSAULT | 16:00:00     | 3390 |
-| BATTERY - SIMPLE ASSAULT | 17:00:00     | 3345 |
-| BATTERY - SIMPLE ASSAULT | 19:00:00     | 3266 |
-| BATTERY - SIMPLE ASSAULT | 21:00:00     | 3254 |
-| BATTERY - SIMPLE ASSAULT | 14:00:00     | 3209 |
-| BATTERY - SIMPLE ASSAULT | 22:00:00     | 3055 |
+| occured_time | crime                    |    n |
+|:-------------|:-------------------------|-----:|
+| 18:00:00     | BATTERY - SIMPLE ASSAULT | 3577 |
+| 12:00:00     | BATTERY - SIMPLE ASSAULT | 3564 |
+| 20:00:00     | BATTERY - SIMPLE ASSAULT | 3440 |
+| 15:00:00     | BATTERY - SIMPLE ASSAULT | 3394 |
+| 16:00:00     | BATTERY - SIMPLE ASSAULT | 3390 |
+| 17:00:00     | BATTERY - SIMPLE ASSAULT | 3345 |
+| 19:00:00     | BATTERY - SIMPLE ASSAULT | 3266 |
+| 21:00:00     | BATTERY - SIMPLE ASSAULT | 3254 |
+| 14:00:00     | BATTERY - SIMPLE ASSAULT | 3209 |
+| 22:00:00     | BATTERY - SIMPLE ASSAULT | 3055 |
+
+Nous pouvons constater que 12pm, 8pm ainsi que 6pm sont les trois heures
+les plus criminelles à Los Angeles. Pour ce qui est des armes, ce sont
+plutôt des crimes faits avec la force corporelles. Il est donc évident
+que les crimes commis sont de simple combat sans arme.
+
+Dans la même ordre d’idée, nous avons analysé l’heure la plus criminelle
+de la ville de New York. Selon ces heures, nous avons voulu analyser le
+lieu de ces crimes ainsi que la description de ceux-ci.
 
 | hour |      n |
 |-----:|-------:|
@@ -152,31 +186,31 @@ Comme on le constate
 |   21 | 241024 |
 |    0 | 230859 |
 
-| PREM_TYP_DESC | hour |     n |
-|:--------------|-----:|------:|
-| STREET        |   20 | 93577 |
-| STREET        |   19 | 90967 |
-| STREET        |   18 | 90894 |
-| STREET        |   21 | 89958 |
-| STREET        |   22 | 89799 |
-| STREET        |   17 | 85053 |
-| STREET        |   23 | 83320 |
-| STREET        |   15 | 82578 |
-| STREET        |   16 | 82184 |
-| STREET        |    0 | 76431 |
+| hour | PREM_TYP_DESC |     n |
+|-----:|:--------------|------:|
+|   20 | STREET        | 93577 |
+|   19 | STREET        | 90967 |
+|   18 | STREET        | 90894 |
+|   21 | STREET        | 89958 |
+|   22 | STREET        | 89799 |
+|   17 | STREET        | 85053 |
+|   23 | STREET        | 83320 |
+|   15 | STREET        | 82578 |
+|   16 | STREET        | 82184 |
+|    0 | STREET        | 76431 |
 
-| OFNS_DESC | hour |      n |
-|:----------|-----:|-------:|
-| PROPERTY  |   12 | 147676 |
-| PROPERTY  |   15 | 146065 |
-| PROPERTY  |   18 | 143470 |
-| PROPERTY  |   17 | 143411 |
-| PROPERTY  |   16 | 143257 |
-| PROPERTY  |   14 | 130492 |
-| PROPERTY  |   19 | 130201 |
-| PROPERTY  |   20 | 123259 |
-| PROPERTY  |   13 | 117409 |
-| PROPERTY  |    0 | 112908 |
+| hour | OFNS_DESC |      n |
+|-----:|:----------|-------:|
+|   12 | PROPERTY  | 147676 |
+|   15 | PROPERTY  | 146065 |
+|   18 | PROPERTY  | 143470 |
+|   17 | PROPERTY  | 143411 |
+|   16 | PROPERTY  | 143257 |
+|   14 | PROPERTY  | 130492 |
+|   19 | PROPERTY  | 130201 |
+|   20 | PROPERTY  | 123259 |
+|   13 | PROPERTY  | 117409 |
+|    0 | PROPERTY  | 112908 |
 
 | saison    |       n |
 |:----------|--------:|
@@ -244,5 +278,45 @@ Comme on le constate
     ## # ℹ 293,595 more rows
 
 ![](ProjetFinal_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+
+Maintenat, testons si l’âge moyen des victimes de la est de 33 ans (Nous
+utiliserons un niveau de signification de 0,05)
+
+    ## Response: victim_age (numeric)
+    ## Null Hypothesis: point
+    ## # A tibble: 500 × 2
+    ##    replicate  stat
+    ##        <int> <dbl>
+    ##  1         1  33.0
+    ##  2         2  33.0
+    ##  3         3  33.0
+    ##  4         4  33.0
+    ##  5         5  33.0
+    ##  6         6  33.0
+    ##  7         7  33.0
+    ##  8         8  33.0
+    ##  9         9  33.0
+    ## 10        10  33.0
+    ## # ℹ 490 more rows
+
+    ## Response: victim_age (numeric)
+    ## # A tibble: 1 × 1
+    ##    stat
+    ##   <dbl>
+    ## 1  33.0
+
+![](ProjetFinal_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+
+    ## # A tibble: 1 × 1
+    ##   p_value
+    ##     <dbl>
+    ## 1    0.74
+
+    ## # A tibble: 1 × 2
+    ##   lower_ci upper_ci
+    ##      <dbl>    <dbl>
+    ## 1     33.0     33.0
+
+![](ProjetFinal_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 ## Bibliographie

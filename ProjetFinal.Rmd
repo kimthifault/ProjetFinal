@@ -34,11 +34,13 @@ Crime_LA <- read_csv("data/crimes_all_cleaned.csv")
 
 ## Données
 
+Pour trouver les deux villes avec le plus haut taux de criminalité, nous avons élaboré un graphique avec le jeu de donnée « hate_crime.csv ». Il présente des informations sur la criminalité des États_unis depuis 1991, spécifiquement sur les États du pays. Ce jeu de donnée est constitué de 28 colonnes et 209 442 lignes. Grâce à celui-ci, nous avons pu constater que ce n’était pas Texas, mais plutôt la Californie qui contenait le plus de crimes comptabilisés. Nous prendrons donc nos données sur la plus grande ville de cet état, soit Los Angeles. Pour ce qui est du deuxième état le plus criminalisé, il s’agissait de New York. Selon le même raisonnement, nous allons prendre des données sur la ville de New York. Il était donc primordial de trouver deux jeux de donnée pour entamer notre analyse. Le premier jeu de donnée est pour la ville de New York et se nomme « final_data.csv ». Il contient 13 colonnes et 1 038 051 lignes. Le deuxième est donc pour la ville de Los Angeles et se nomme « crimes_all_cleaned.csv ». Celui-ci est constitué de 26 colonnes et 7 747 417 lignes. Les jeux de donnée proviennent du site de base de donné «Kaggle». 
+
 ## Analyse des données
 
 #### Première étape:
 
-Tout d'abord, 
+Tout d'abord, nous allons limiter notre base de donnée sur les crimes ayant eu lieu entre 2010 et 2019.
 
 ```{r}
 crime <- hate_crime %>%
@@ -48,7 +50,7 @@ crime
 
 ```
 
-Maintenant, 
+Maintenant, faisons le top 10 des états les plus criminelles des États-Unis durant cette période.
 
 ```{r}
 top10 <- crime %>%
@@ -62,10 +64,7 @@ ggplot(top10, aes(x = STATE_ABBR, y = n, fill = n)) + geom_col()  + labs(x = "É
 
 ```
 
-Comme nous pouvons le constater, l'état de la Californie et de New York ont tous deux le taux de crime le plus élevé des États-Unis depuis 2010
-
-
-Sélection des crimes entre 2010 et 2019 dans chacune des bases de données
+Comme nous pouvons le constater, l'état de la Californie et de New York sont les deux états ayant le taux de crime le plus élevé des États-Unis depuis 2010. Après avoir trouvé des bases de données appropriées pour chacune des villes, nous limiterons encore une fois notre sélection sur les crimes ayant eu lieu entre 2010 et 2019.
 ```{r}
 
 crime_ny <- Crime_NY %>%
@@ -78,7 +77,7 @@ crime_la
 
 ```
 
-Voici, pour chaque ville, la date exacte ou il y a eu le plus de criminalité
+En premier lieu, nous trouvions intéressant de savoir la date exacte où il y a eu le plus de criminalité.
 ```{r}
 
 date_ultime_LA <- crime_la |>
@@ -93,7 +92,7 @@ knitr::kable(date_ultime_NY)
 ```
 Comme on le constate
 
-
+En deuxième lieu, nous voulions analyser, dans la ville de Los Angeles, les heures les plus criminelles en moyenne dans une journée. Ensuite, selon ces heures, nous voulions savoir quelle serait l'arme utilisée et quel serait le crime comis.
 ```{r}
 heure <- crime_la|>
   count(occured_time, sort = TRUE) |>
@@ -101,17 +100,19 @@ heure <- crime_la|>
 knitr::kable(heure)
 
 arme_heure <- crime_la|>
-  count(weapon, occured_time, sort = TRUE)|>
+  count(occured_time, weapon, sort = TRUE)|>
   head(n = 10)
 knitr::kable(arme_heure)
 
 crime_heure <- crime_la|>
-  count(crime, occured_time, sort = TRUE)|>
+  count(occured_time, crime, sort = TRUE)|>
   head(n = 10)
 knitr::kable(crime_heure)
 
 ```
+Nous pouvons constater que 12pm, 8pm ainsi que 6pm sont les trois heures les plus criminelles à Los Angeles. Pour ce qui est des armes, ce sont plutôt des crimes faits avec la force corporelles. Il est donc évident que les crimes commis sont de simple combat sans arme.
 
+Dans la même ordre d'idée, nous avons analysé l'heure la plus criminelle de la ville de New York. Selon ces heures, nous avons voulu analyser le lieu de ces crimes ainsi que la description de ceux-ci.
 ```{r}
 heure_ny <- crime_ny|>
   count(hour, sort = TRUE) |>
@@ -119,12 +120,12 @@ heure_ny <- crime_ny|>
 knitr::kable(heure_ny)
 
 lieu_heure <- crime_ny|>
-  count(PREM_TYP_DESC, hour, sort = TRUE)|>
+  count(hour, PREM_TYP_DESC, sort = TRUE)|>
   head(n = 10)
 knitr::kable(lieu_heure)
 
 crime_heure_ny <- crime_ny|>
-  count(OFNS_DESC, hour, sort = TRUE)|>
+  count(hour, OFNS_DESC, sort = TRUE)|>
   head(n = 10)
 knitr::kable(crime_heure_ny)
 ```
@@ -175,6 +176,48 @@ age_la <- crime_la |>
 age_la
 
 ggplot(age_la, aes(x = victim_age, y = victim_sex)) + geom_violin() + facet_wrap(~area)
+```
+
+Maintenat, testons si l'âge moyen des victimes de la est de 33 ans (Nous utiliserons un niveau de signification de 0,05)
+```{r}
+test<- crime_la|>
+  specify(response = victim_age)|>
+  hypothesize(null = "point", mu = 33)|>
+  generate(reps = 500, type = "bootstrap")|>
+  calculate(stat = "mean")
+test
+
+obs_mean <- crime_la |>
+  specify(response = victim_age) %>%
+  calculate(stat = "mean")
+obs_mean
+
+```
+
+```{r}
+test|>
+  visualize() + shade_p_value(obs_stat = obs_mean, direction = "two-sided")
+
+
+p_value <- test |>
+  get_p_value(obs_stat = obs_mean, direction = "two-sided")
+p_value
+```
+
+
+```{r}
+boot_dist <- crime_la |>
+  specify(response = victim_age) |>
+  generate(reps = 500, type = "bootstrap") |>
+  calculate(stat = "mean")
+
+ci <- boot_dist |>
+  get_confidence_interval(point_estimate = obs_mean, level = .95, type = "se")
+ci
+
+boot_dist |>
+  visualize() +
+  shade_confidence_interval(endpoints = ci)
 ```
 
 
