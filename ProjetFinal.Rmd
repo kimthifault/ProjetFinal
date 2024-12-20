@@ -52,7 +52,7 @@ Pour trouver les deux villes avec le plus haut taux de criminalité, nous avons 
 
 #### Première étape:
 
-Tout d'abord, nous allons limiter notre base de donnée sur les crimes ayant eu lieu entre 2010 et 2019.
+Tout d'abord, nous allons limiter notre base de données sur les crimes ayant eu lieu entre 2010 et 2019.
 
 ```{r}
 crime <- hate_crime |>
@@ -76,7 +76,7 @@ ggplot(top10, aes(x = STATE_ABBR, y = n, fill = n)) + geom_col()  + labs(x = "É
 
 ```
 
-Comme nous pouvons le constater, l'état de la Californie et de New York sont les deux états ayant le taux de crime le plus élevé des États-Unis depuis 2010. Après avoir trouvé des bases de données appropriées pour chacune des villes, nous limiterons encore une fois notre sélection sur les crimes ayant eu lieu entre 2010 et 2019.
+Comme nous pouvons le constater, les États de Californie et de New York sont les deux États ayant le taux de criminalité le plus élevé aux États-Unis depuis 2010. Après avoir trouvé des bases de données appropriées pour chacune des villes, nous limiterons encore une fois notre sélection aux crimes ayant eu lieu entre 2010 et 2019.
 ```{r}
 
 crime_ny <- Crime_NY |>
@@ -89,7 +89,7 @@ crime_la
 
 ```
 
-En premier lieu, nous trouvions intéressant de connaître la date exacte où il y a eu le plus de criminalité.
+En premier lieu, nous trouvons intéressant de connaître la date exacte où il y a eu le plus de criminalité.
 ```{r}
 
 date_ultime_LA <- crime_la |>
@@ -172,6 +172,7 @@ age
 
 ggplot(age, aes(x = VIC_AGE_GROUP, fill = BORO_NM)) + geom_bar(position = "fill") + labs(x = "Âge des victimes", y = "Nombre d'actes criminels", title = "Âge des victimes en fonction des secteurs", subtitle = "New York", fill = "secteurs")
 ```
+Dans ce graphique, nous constatons que les proportions sont relativement semblables par rapport à l’âge des victimes dans les différents secteurs. Le secteur Staten Island est le moins touché par les crimes, tandis que Brooklyn est le plus touché. Le groupe d’âge moins de 18 ans est aussi plus nombreux dans le secteur de Brooklyn.
 
 Pour ce qui est des secteurs de Los Angeles, nous nous interessions également à l'âge des victimes dans chaque quartier, mais plus précisément de la différence entre les victimes de sexes féminins et masculins.
 ```{r}
@@ -193,8 +194,9 @@ age_la
 
 ggplot(age_la, aes(x = victim_age, y = victim_sex)) + geom_violin() + facet_wrap(~area) + labs(x = "Âge de la victime", y = "Sexe de la victime", title = "Âge et sexe des victimes en fonction du secteur", subtitle = "Los Angeles")
 ```
+Dans cette visualisation, nous pouvons constater que les femmes de 25 ans sont le groupe d’âge le plus touchée, tandis que chez les hommes, on peut voir une plus grande dispersion, mais quand même près de 25 ans aussi.
 
-En dernier lieu, nous voulions effectuer un test d'hypothèse afin de savoir si l'âge moyen des victimes de Los Angeles est de 33 ans (Nous utiliserons un niveau de signification de 0,05)
+En dernier lieu, nous voulions effectuer un test d'hypothèse afin de vérifier l'âge moyen des victimes de Los Angeles (nous utiliserons un niveau de signification de 0,05). Nous poserons notre hypothèse nulle comme étant que l'âge moyen des victimes est de 33 ans.
 ```{r}
 test<- crime_la |>
   specify(response = victim_age) |>
@@ -208,18 +210,19 @@ obs_mean <- crime_la |>
   calculate(stat = "mean")
 obs_mean
 
-```
-
-```{r}
 test|>
   visualize() + shade_p_value(obs_stat = obs_mean, direction = "two-sided")
 
+```
 
+Dans le graphique ci-dessus, la zone de couleur rose représente les valeurs qui sont plus extrêmes que notre statistique observée. La probabilité de tomber dans cette zone est la valeur p de notre test d’hypothèses. Ainsi, puisque la zone ombrée est grande, la valeur p est égaelement grande, et il sera plus probable de ne pas rejeter l’hypothèse nulle. Calculons donc le p exact.
+
+```{r}
 p_value <- test |>
   get_p_value(obs_stat = obs_mean, direction = "two-sided")
 p_value
 ```
-
+La valeur exacte de p est égale à 0.712. Puisque cette valeur est supérieure au niveau de signification préétablie au début du test, soit 0.05, nous ne rejettons pas l'hypothèse nulle. Ainsi, nous pouvons conclure que l'âge moyen des victime est de 33 ans. Finalement, visualisons l'intervalle de confiance pour notre statistique. 
 
 ```{r}
 boot_dist <- crime_la |>
@@ -234,7 +237,17 @@ ci
 boot_dist |>
   visualize() +
   shade_confidence_interval(endpoints = ci)
+
 ```
+
+
+## Discussion
+
+Pour conclure ce projet, nous avons pu effectuer une analyse exhaustive sur les différents aspects du crime aux États-Unis et plus précisément, dans la ville de New York et la ville de Los Angeles. 
+
+Malheureusement, nous n’avions pas les mêmes données fournies par les jeux de données. Celui de Los Angeles était un peu moins complet que celui de New York, puisqu’il ne présentait pas l’âge de l’agresseur et les dates étaient condensées par mois et non par jour. Donc, nous n’avons pas pu faire une comparaison parfaite entre les deux endroits, mais nous avons quand même rassembler suffisamment d’informations pour comparer certains aspects qui étaient très pertinents pour notre analyse (âge de la victime, type d’arme utilisé, lieu, etc.). De plus, les dates recensées peuvent être tout autant le moment où le crime a eu lieu ou bien le moment où les autorités sont arrivées sur les lieux. Cela étant dit, nous avons estimé que l’intervalle entre les deux ne devaient pas être énormes, donc nous n’avons pas pris en compte ce problème.
+
+Grâce aux informations assimilés dans les jeux de données et les explications tout au long des codes et des graphiques, nous avons pu constater qu’il existe bel et bien un lien plus ou moins étroit entre les caractéristiques entourant les crimes d’une ville à une autre. Les moyennes d’âge, les types d’armes utilisés et les dates ayant le plus haut taux de criminalité se ressemblaient beaucoup. Nous pouvons tirer la conclusion que les deux villes, bien que situées à l’opposé du continent, se ressemblent énormément que ce soit au niveau qualitatif que quantitatif, mise à part des secteurs bien évidemment.
 
 
 

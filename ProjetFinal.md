@@ -80,7 +80,7 @@ donné «Kaggle».
 
 #### Première étape:
 
-Tout d’abord, nous allons limiter notre base de donnée sur les crimes
+Tout d’abord, nous allons limiter notre base de données sur les crimes
 ayant eu lieu entre 2010 et 2019.
 
     ## # A tibble: 65,863 × 2
@@ -116,11 +116,11 @@ Maintenant, faisons le classement des 10 états les plus criminalisés des
 
 ![](ProjetFinal_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
-Comme nous pouvons le constater, l’état de la Californie et de New York
-sont les deux états ayant le taux de crime le plus élevé des États-Unis
-depuis 2010. Après avoir trouvé des bases de données appropriées pour
-chacune des villes, nous limiterons encore une fois notre sélection sur
-les crimes ayant eu lieu entre 2010 et 2019.
+Comme nous pouvons le constater, les États de Californie et de New York
+sont les deux États ayant le taux de criminalité le plus élevé aux
+États-Unis depuis 2010. Après avoir trouvé des bases de données
+appropriées pour chacune des villes, nous limiterons encore une fois
+notre sélection aux crimes ayant eu lieu entre 2010 et 2019.
 
     ## # A tibble: 4,817,710 × 26
     ##    CMPLNT_NUM  year month   day weekday    hour Latitude Longitude COMPLETED
@@ -159,7 +159,7 @@ les crimes ayant eu lieu entre 2010 et 2019.
     ## # ℹ 6 more variables: victim_sex <chr>, victim_descent <chr>, weapon <chr>,
     ## #   status <chr>, lat <dbl>, lon <dbl>
 
-En premier lieu, nous trouvions intéressant de connaître la date exacte
+En premier lieu, nous trouvons intéressant de connaître la date exacte
 où il y a eu le plus de criminalité.
 
 | occured_date |   n |
@@ -327,7 +327,12 @@ d’age.
     ## 10 <18           BRONX        12
     ## # ℹ 3,314,343 more rows
 
-![](ProjetFinal_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![](ProjetFinal_files/figure-gfm/unnamed-chunk-12-1.png)<!-- --> Dans ce
+graphique, nous constatons que les proportions sont relativement
+semblables par rapport à l’âge des victimes dans les différents
+secteurs. Le secteur Staten Island est le moins touché par les crimes,
+tandis que Brooklyn est le plus touché. Le groupe d’âge moins de 18 ans
+est aussi plus nombreux dans le secteur de Brooklyn.
 
 Pour ce qui est des secteurs de Los Angeles, nous nous interessions
 également à l’âge des victimes dans chaque quartier, mais plus
@@ -364,11 +369,16 @@ masculins.
     ## 10 Central     F                  29
     ## # ℹ 293,595 more rows
 
-![](ProjetFinal_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](ProjetFinal_files/figure-gfm/unnamed-chunk-14-1.png)<!-- --> Dans
+cette visualisation, nous pouvons constater que les femmes de 25 ans
+sont le groupe d’âge le plus touchée, tandis que chez les hommes, on
+peut voir une plus grande dispersion, mais quand même près de 25 ans
+aussi.
 
 En dernier lieu, nous voulions effectuer un test d’hypothèse afin de
-savoir si l’âge moyen des victimes de Los Angeles est de 33 ans (Nous
-utiliserons un niveau de signification de 0,05)
+vérifier l’âge moyen des victimes de Los Angeles (nous utiliserons un
+niveau de signification de 0,05). Nous poserons notre hypothèse nulle
+comme étant que l’âge moyen des victimes est de 33 ans.
 
     ## Response: victim_age (numeric)
     ## Null Hypothesis: point
@@ -393,12 +403,25 @@ utiliserons un niveau de signification de 0,05)
     ##   <dbl>
     ## 1  33.0
 
-![](ProjetFinal_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+![](ProjetFinal_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+
+Dans le graphique ci-dessus, la zone de couleur rose représente les
+valeurs qui sont plus extrêmes que notre statistique observée. La
+probabilité de tomber dans cette zone est la valeur p de notre test
+d’hypothèses. Ainsi, puisque la zone ombrée est grande, la valeur p est
+égaelement grande, et il sera plus probable de ne pas rejeter
+l’hypothèse nulle. Calculons donc le p exact.
 
     ## # A tibble: 1 × 1
     ##   p_value
     ##     <dbl>
-    ## 1    0.76
+    ## 1   0.676
+
+La valeur exacte de p est égale à 0.712. Puisque cette valeur est
+supérieure au niveau de signification préétablie au début du test, soit
+0.05, nous ne rejettons pas l’hypothèse nulle. Ainsi, nous pouvons
+conclure que l’âge moyen des victime est de 33 ans. Finalement,
+visualisons l’intervalle de confiance pour notre statistique.
 
     ## # A tibble: 1 × 2
     ##   lower_ci upper_ci
@@ -406,6 +429,35 @@ utiliserons un niveau de signification de 0,05)
     ## 1     33.0     33.0
 
 ![](ProjetFinal_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+
+## Discussion
+
+Pour conclure ce projet, nous avons pu effectuer une analyse exhaustive
+sur les différents aspects du crime aux États-Unis et plus précisément,
+dans la ville de New York et la ville de Los Angeles.
+
+Malheureusement, nous n’avions pas les mêmes données fournies par les
+jeux de données. Celui de Los Angeles était un peu moins complet que
+celui de New York, puisqu’il ne présentait pas l’âge de l’agresseur et
+les dates étaient condensées par mois et non par jour. Donc, nous
+n’avons pas pu faire une comparaison parfaite entre les deux endroits,
+mais nous avons quand même rassembler suffisamment d’informations pour
+comparer certains aspects qui étaient très pertinents pour notre analyse
+(âge de la victime, type d’arme utilisé, lieu, etc.). De plus, les dates
+recensées peuvent être tout autant le moment où le crime a eu lieu ou
+bien le moment où les autorités sont arrivées sur les lieux. Cela étant
+dit, nous avons estimé que l’intervalle entre les deux ne devaient pas
+être énormes, donc nous n’avons pas pris en compte ce problème.
+
+Grâce aux informations assimilés dans les jeux de données et les
+explications tout au long des codes et des graphiques, nous avons pu
+constater qu’il existe bel et bien un lien plus ou moins étroit entre
+les caractéristiques entourant les crimes d’une ville à une autre. Les
+moyennes d’âge, les types d’armes utilisés et les dates ayant le plus
+haut taux de criminalité se ressemblaient beaucoup. Nous pouvons tirer
+la conclusion que les deux villes, bien que situées à l’opposé du
+continent, se ressemblent énormément que ce soit au niveau qualitatif
+que quantitatif, mise à part des secteurs bien évidemment.
 
 ## Bibliographie
 
