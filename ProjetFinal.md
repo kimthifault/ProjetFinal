@@ -4,11 +4,63 @@ Projet final - Kim Thifault et Laurie Labonté
 
 ## Introduction
 
+Dans le cadre du projet final de notre cours d’analyse de données
+scientifiques avec R, nous devions analyser un ensemble de données à
+notre choix dans le but de démontrer une compréhension et une maîtrise
+des techniques vues en classe. Nous avons donc décidé de choisir la
+thématique de la criminalité, puisque ce sujet attise un intérêt
+particulier pour nous. Les variables observées et analysées seront
+constituées des crimes à travers les années 2010 et 2019. Nous allons
+nous concentrer sur les types de crimes, la date du crime, le sexe,
+l’âge et le secteur où le crime en question a eu lieu.
+
+À première vue, l’île de Montréal était notre premier choix de secteur.
+Celui-ci semblait parfait, puisque nous connaissions bien les différents
+quartiers et il était facile pour nous de visualiser et d’acheminer les
+informations. Cependant, avec des recherches plus approfondies, les jeux
+de données proposés n’étaient pas suffisamment exhaustifs pour effectuer
+une conclusion complète et recherchée pour établir des liens concrets
+entre les variables préétablies.
+
+Alors, nous avons décidé de nous tourner vers nos voisins immédiats ;
+les États-Unis. Avec une population considérablement plus grande et
+toute aussi diversifiée que celle du Canada, il était plus simple pour
+nous de cibler des jeux de données avec suffisamment d’information pour
+poser des questions significatives et y répondre à l’aide des données
+fournies par ces jeux.
+
+Les villes les plus criminalisées, selon notre hypothèse, seront New
+York et Houston. D’abord, la ville de New York contient une population
+d’environ 8,1 millions d’habitants, donc deux fois plus que dans la
+ville Montréal . Ce qui fait d’elle la ville la plus peuplée des
+États-Unis et se hisse donc à la onzième place du classement des villes
+les plus peuplées au monde. De plus, New York est une des villes avec le
+plus haut taux de sans-abris dû à plusieurs problématiques dont la crise
+du logement, la difficulté d’accès aux services de santé, la violence
+conjugale, les difficultés financières, etc. Ce qui nous fait penser que
+cette ville aura un taux plus élevé qu’ailleurs dans le pays.
+
+Ensuite, pour ce qui est de Houston, c’est la ville la plus peuplé du
+Texas et l’état où il y a le plus grand nombre de propriétaire d’arme à
+feu. Avec son nombre élevé de possession d’armes, c’est alors qu’il doit
+y avoir une force externe qui encourage fortement les Texan(es) à
+s’armer autant. L’hypothèse émise est donc que cette ville doit avoir un
+taux de crime plus élevé que la moyenne.
+
+L’origine de la criminalité sera notre questionnement principal dans
+cette analyse. Nous aborderons ce sujet à l’aide de plusieurs variables
+qui seront mises en valeur, afin d’affirmer ou d’infirmé notre
+hypothèse. Nous allons concentrer notre recherche sur les différentes
+caractéristiques qui entourent les crimes faits dans les deux métropoles
+ciblées par notre recherche. Nous pourrons donc comparer ces deux villes
+pour analyser s’il existe une tendance entre les caractéristiques
+préétablies et les crimes commis.
+
 ## Données
 
 Pour trouver les deux villes avec le plus haut taux de criminalité, nous
 avons élaboré un graphique avec le jeu de donnée « hate_crime.csv ». Il
-présente des informations sur la criminalité des États_unis depuis 1991,
+présente des informations sur la criminalité des États-Unis depuis 1991,
 spécifiquement sur les États du pays. Ce jeu de donnée est constitué de
 28 colonnes et 209 442 lignes. Grâce à celui-ci, nous avons pu constater
 que ce n’était pas Texas, mais plutôt la Californie qui contenait le
@@ -46,7 +98,7 @@ ayant eu lieu entre 2010 et 2019.
     ## 10      2010 AL        
     ## # ℹ 65,853 more rows
 
-Maintenant, faisons le top 10 des états les plus criminelles des
+Maintenant, faisons le classement des 10 états les plus criminalisés des
 États-Unis durant cette période.
 
 | STATE_ABBR |    n |
@@ -121,7 +173,7 @@ il y a eu le plus de criminalité.
 Comme on le constate
 
 En deuxième lieu, nous voulions analyser, dans la ville de Los Angeles,
-les heures les plus criminelles en moyenne dans une journée. Ensuite,
+les heures avec le plus haut taux de criminalités en moyenne. Ensuite,
 selon ces heures, nous voulions savoir quelle serait l’arme utilisée et
 quel serait le crime comis.
 
@@ -165,13 +217,16 @@ quel serait le crime comis.
 | 22:00:00     | BATTERY - SIMPLE ASSAULT | 3055 |
 
 Nous pouvons constater que 12pm, 8pm ainsi que 6pm sont les trois heures
-les plus criminelles à Los Angeles. Pour ce qui est des armes, ce sont
-plutôt des crimes faits avec la force corporelles. Il est donc évident
-que les crimes commis sont de simple combat sans arme.
+où le taux de crime est le plus élevé à Los Angeles. En ce qui attrait
+de l’arme de prédilection lors des crimes recensés, la force brute est
+mise de l’avant. Il y a donc une forte tendance qui porte à croire que
+ce sont plutôt les combats corps à corps qui perdurent à travers les
+années et qui occupent le rang d’arme de propension.
 
-Dans la même ordre d’idée, nous avons analysé l’heure la plus criminelle
-de la ville de New York. Selon ces heures, nous avons voulu analyser le
-lieu de ces crimes ainsi que la description de ceux-ci.
+Dans le même ordre d’idée, nous avons également analysé les heures où il
+y a eu le plus de crimes dans la ville de New York. Selon ces heures,
+nous avons voulu analyser le lieu de ces crimes ainsi que la description
+de ceux-ci.
 
 | hour |      n |
 |-----:|-------:|
@@ -212,12 +267,29 @@ lieu de ces crimes ainsi que la description de ceux-ci.
 |   13 | PROPERTY  | 117409 |
 |    0 | PROPERTY  | 112908 |
 
+Les trois heures avec le taux de crime le plus élevé à New York sont
+3pm, 6pm et 5pm. Le lieu le plus fréquent où les crimes se produisent
+sont dans la rue, cependant, les heures sont 8pm, 7pm et 6pm. Pour ce
+qui est de la description des crimes, il s’agit en majorité d’atteinte
+aux bien, et ce, à 12pm, 3pm et 6pm.
+
+En troisième lieu, nous trouvions intéressant d’étudier s’il y avait un
+lien entre la saison et le taux de criminalité à New York. Nous avons
+donc regroupé les mois correspondant aux saisons pour faire le
+recensement des crimes durant ces périodes.
+
 | saison    |       n |
 |:----------|--------:|
 | Été       | 1280824 |
 | Printemps | 1237142 |
 | Automne   | 1177300 |
 | Hiver     | 1122444 |
+
+En quatrième lieu, nous voulions examiner les données en fonction des
+secteurs de New York et de Los Angeles. Nous avons tout d’abord compté
+le nombre de crime en fonction des quartiers de New York, et ensuite,
+nous avons analysé la quantité de crime en fonction de chaque groupe
+d’age.
 
 | BORO_NM       |       n |
 |:--------------|--------:|
@@ -246,6 +318,11 @@ lieu de ces crimes ainsi que la description de ceux-ci.
     ## # ℹ 3,314,343 more rows
 
 ![](ProjetFinal_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+
+Pour ce qui est des secteurs de Los Angeles, nous nous interessions
+également à l’âge des victimes dans chaque quartier, mais plus
+précisément de la différence entre les victimes de sexes féminins et
+masculins.
 
 | area        |     n |
 |:------------|------:|
@@ -294,7 +371,7 @@ utiliserons un niveau de signification de 0,05)
     ##  5         5  33.0
     ##  6         6  33.0
     ##  7         7  33.0
-    ##  8         8  33.0
+    ##  8         8  33.1
     ##  9         9  33.0
     ## 10        10  33.0
     ## # ℹ 490 more rows
@@ -310,7 +387,7 @@ utiliserons un niveau de signification de 0,05)
     ## # A tibble: 1 × 1
     ##   p_value
     ##     <dbl>
-    ## 1    0.74
+    ## 1   0.644
 
     ## # A tibble: 1 × 2
     ##   lower_ci upper_ci
@@ -320,3 +397,10 @@ utiliserons un niveau de signification de 0,05)
 ![](ProjetFinal_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 ## Bibliographie
+
+1)  <https://worldpopulationreview.com/us-cities/new-york/new-york>
+2)  <https://www.security.org/resources/homeless-statistics/>
+3)  <https://developmentalpolitics.org/platform-of-policy-recommendations/homelessness-in-the-u-s/?gad>
+    source=1&gclid=Cj0KCQiAx9q6BhCDARIsACwUxu7TVseNNyTqiciXjNYTsXqm8B998agMSXHUbD3UCbFD4N7c9dxeWeYaAuacEALw_wcB
+4)  <https://worldpopulationreview.com/us-cities/texas>
+    5)<https://www.cbsnews.com/pictures/gun-ownership-rates-by-state/52/>
