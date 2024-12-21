@@ -223,7 +223,7 @@ p_value <- test |>
   get_p_value(obs_stat = obs_mean, direction = "two-sided")
 p_value
 ```
-La valeur exacte de p est égale à 0.712. Puisque cette valeur est supérieure au niveau de signification préétablie au début du test, soit 0.05, nous ne rejettons pas l'hypothèse nulle. Ainsi, nous pouvons conclure que l'âge moyen des victime est de 33 ans. Finalement, visualisons l'intervalle de confiance pour notre statistique. 
+La valeur exacte de p est égale à 0.664. Puisque cette valeur est supérieure au niveau de signification préétablie au début du test, soit 0.05, nous ne rejettons pas l'hypothèse nulle. Ainsi, nous pouvons conclure que l'âge moyen des victime est de 33 ans. Finalement, visualisons l'intervalle de confiance pour notre statistique. 
 
 ```{r}
 boot_dist <- crime_la |>

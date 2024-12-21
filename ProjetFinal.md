@@ -416,9 +416,9 @@ l’hypothèse nulle. Calculons donc le p exact.
     ## # A tibble: 1 × 1
     ##   p_value
     ##     <dbl>
-    ## 1   0.648
+    ## 1     0.7
 
-La valeur exacte de p est égale à 0.712. Puisque cette valeur est
+La valeur exacte de p est égale à 0.664. Puisque cette valeur est
 supérieure au niveau de signification préétablie au début du test, soit
 0.05, nous ne rejettons pas l’hypothèse nulle. Ainsi, nous pouvons
 conclure que l’âge moyen des victime est de 33 ans. Finalement,
